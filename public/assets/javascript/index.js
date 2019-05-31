@@ -49,7 +49,7 @@ $(document).ready(function () {
                 "<h4> Looks like there are no new articles.</h4>",
                 "</div>",
                 "<div class='panel panel-default'>",
-                "div class='panel-heading text-center'>",
+                "<div class='panel-heading text-center'>",
                 "<h3> What would you like to do?</h3>",
                 "</div>",
                 "<div class='panel-body text-center'>",

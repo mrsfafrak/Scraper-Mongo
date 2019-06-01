@@ -2,46 +2,47 @@
 var cheerio = require("cheerio");
 var axios = require("axios");
 
-// var scrape = function (cb) {
-//     request("http://www.nytimes.com", function(err, res, body){
-//         var $ = cheerio.load(body);
-//         var articles = [];
+var scrape = function (cb) {
+    axios.get("https://www.npr.org").then(function (response) {
+        var $ = cheerio.load(response.data);
 
-//         $(".theme-summary").each(function(i, element){
-//             var head = $(this).children(".story-heading").text().trim();
-//             var sum = $(this).children(".summary").text().trim();
+        // Now, we grab every h2 within an article tag, and do the following:
+        $(".hp-item").each(function (i, element) {
+            // Save an empty result object
+            var results = {};
 
-//             if(head && sum){
-//                 var headNeat = head.replace(/(\r\n|\n|\r|\t|\s)+/gm, " ").trim();
-//                 var sumNeat = sum.replace(/(\r\n|\n|\r|\t|\s)+/gm, " ").trim();
+            results.title = $(element).find("h3.title").text();
+            results.url = $(element).find("a").attr('href');
+            results.description = $(element).find("p.teaser").text();
 
-//                 var dataToAdd = {
-//                     headline: headNeat,
-//                     summary: sumNeat
-//                 };
+            console.log(results);
 
-//                 articles.push(dataToAdd);
-//             }
-//         });
-//         cb(articles);
-//     });
-// };
+        });
+    });
+    cb(results);
 
-axios.get("https://www.npr.org").then(function (response) {
-   var $ = cheerio.load(response.data);
+    // request("http://www.nytimes.com", function(err, res, body){
+    //     var $ = cheerio.load(body);
+    //     var articles = [];
 
-   // Now, we grab every h2 within an article tag, and do the following:
-   $(".hp-item").each(function (i, element) {
-     // Save an empty result object
-     var results = {};
+    //     $(".theme-summary").each(function(i, element){
+    //         var head = $(this).children(".story-heading").text().trim();
+    //         var sum = $(this).children(".summary").text().trim();
 
-     results.title = $(element).find("h3.title").text();
-     results.url = $(element).find("a").attr('href');
-     results.description = $(element).find("p.teaser").text();
+    //         if(head && sum){
+    //             var headNeat = head.replace(/(\r\n|\n|\r|\t|\s)+/gm, " ").trim();
+    //             var sumNeat = sum.replace(/(\r\n|\n|\r|\t|\s)+/gm, " ").trim();
 
-     console.log(results);
+    //             var dataToAdd = {
+    //                 headline: headNeat,
+    //                 summary: sumNeat
+    //             };
 
-   });
- });
+    //             articles.push(dataToAdd);
+    //         }
+    //     });
+    //     cb(articles);
+    // });
+};
 
-// module.exports = scrape;
+module.exports = scrape;

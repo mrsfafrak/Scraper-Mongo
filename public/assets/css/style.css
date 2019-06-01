@@ -4,14 +4,16 @@ html {
 }
 body {
     margin-bottom: 80px;
-    background-image: url("../images/paper.jpeg");
+    background-image: url("../images/paper.jpg");
 }
 .footer {
     position: absolute;
     bottom: 0;
     width: 100%;
     height: 80px;
-    background-color: #f5f5f5;
+    /* background-color: #f5f5f5; */
+    background-color: #2196F3;
+    color: white;
 }
 .navbar {
     margin-bottom: 0;
@@ -75,10 +77,10 @@ body {
 .panel.panel-default .panel-body{
     font-size: 16px;
 }
-.footer {
+/* .footer {
     background-color: #2196F3;
     color: white;
-}
+} */
 .footer>.container>p {
     position: absolute;
     bottom: 0;

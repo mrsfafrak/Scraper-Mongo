@@ -60,7 +60,7 @@ $(document).ready(function () {
             ].join(""));
         articleContainer.append(emptyAlert);
     }
-    function handleAlertSave(){
+    function handleArticleSave(){
         var articleToSave = $(this).parents(".panel").data();;
         articleToSave.saved=true;
 

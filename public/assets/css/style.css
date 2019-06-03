@@ -14,6 +14,7 @@ body {
     /* background-color: #f5f5f5; */
     background-color: #2196F3;
     color: white;
+    text-align: center;
 }
 .navbar {
     margin-bottom: 0;
@@ -123,7 +124,6 @@ textarea {
 .note.list-group-item .btn {
     position: relative;
     bottom: 10px;
-    margin-right: 2px;
 }
 
 
